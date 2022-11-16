@@ -199,7 +199,7 @@ const MathSymbol = {
       "\\dagger",
       "\\wedge",
       "\\bullet",
-      "\\setminus",
+      "\\backslash",
       "\\ddagger",
       "\\cdot",
       "\\wr",
