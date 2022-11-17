@@ -127,6 +127,7 @@ function parseContainer(node, children) {
 function renderChildren(children) {
   const parts = [];
   let lefts = [];
+  let rights = [];
   Array.prototype.forEach.call(children, (node) => {
     if(NodeTool.getNodeName(node) === 'mo'){
       const op = NodeTool.getNodeText(node).trim();
@@ -145,7 +146,8 @@ function renderChildren(children) {
               parts.push(Brackets.parseLeft(op, stretchy));
               lefts.push(op);
             }else{
-              parts.push(op);
+              parts.push(Brackets.parseRight(op, stretchy));
+              rights.push(op);
             }
           }
         } else {
@@ -166,7 +168,13 @@ function renderChildren(children) {
       parts.push("\\right.");
     }
   }
-  lefts = undefined;
+  
+  // add pending rights brackets
+  if(rights.length > 0){
+    for(let i=0; i < rights.length; i++){
+      parts.unshift("\\left.");
+    }
+  }
 
   return parts;
 }
