@@ -36,7 +36,7 @@ const Brackets = {
       case '⌜': r = '\\left\\ulcorner ';
         break;
     }
-    return (stretchy ? r : r.replace('\\left', ''));
+    return r;
   },
 
   parseRight: function(it, stretchy = true) {
@@ -60,7 +60,7 @@ const Brackets = {
       case '⌝': r = ' \\right\\urcorner ';
         break;
     }
-    return (stretchy ? r : r.replace('\\right', ''));
+    return r;
   }
 }
 
